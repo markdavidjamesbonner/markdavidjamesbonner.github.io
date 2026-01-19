@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>sam harvey king</title>
+
+  <link rel="stylesheet" href="./css/donut.css">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/quasar@2.14.6/dist/quasar.prod.css" rel="stylesheet">
+
+  <style>
+    .b-coin {
+      color: #000;
+      font-size: 1.05rem;
+      font-weight: bold;
+      text-wrap: nowrap;
+    }
+
+  </style>
+</head>
+
+<body class="bg-cyan-2">
+
+  <div class="container-fluid q-px-xl">
+    <div style="height: 50px;"></div>
+
+    <button class="startDoh q-mb-lg text-bold text-h3 text-deep-orange-13">sam harvey king</button>
+
+    <div class="row">
+
+      <div class="col-12">
+
+        <div id="bitcoin-price">
+
+
+          <ul class="q-mb-none">
+            <li><span style="font-size: 2.75em;">🎄</span>2024 - you and your brother got <span id="total-btc" class="text-bold">0.000701</span> <span class="b-coin">₿itcoin</span> to share - <strong>$50/each</strong> <em><small>(at the time it was purchased)</small></em></li>
+            <li>that means you and <img src="./images/icon_jake_small.png" alt="Jake" style="height: 2em; vertical-align: middle; margin: 0;"> each own <span id="individual-btc" class="text-bold">Loading...</span> fractional <span class="b-coin">₿itcoins</span></li>
+            <li>currently your <span class="b-coin">₿itcoin</span> is worth:</li>
+          </ul>
+          <p class="q-mx-lg text-bold text-h3 text-yellow-9"><span id="your-btc-value" class="text-bold">Loading...</span></p>
+
+
+          <ul class="q-mb-none">
+            <li>the current price of <span class="b-coin">₿itcoin</span> (updated every 60sec) is:</li>
+            <small><em>if you try and refresh me too many times in too short of a period, I'll time-out and make you wait - let me do it on my own every 60sec.</em></small>
+          </ul>
+          <p class="q-mx-lg text-bold text-h3 text-yellow-9"><span id="btc-price" class="text-bold">Loading...</span></p>
+
+          <div id="bitcoin-price-chart" class="container-fluid q-py-lg">
+            <div class="row justify-center items-center">
+
+                <div class="col-12 col-md-10 col-lg-9 col-xl-8">
+                  <div style="height: 2px;" class="bg-purple-6 q-my-lg q-mx-xxl"></div>
+
+                  <p class="text-bold text-h5 text-grey-9"> leave me open for a little while and check out this neat graph!</p>
+
+                  <!-- CHART - chart.js -->
+                  <div>
+                    <canvas id="btcChart"></canvas>
+                  </div>
+
+                  <div style="height: 2px;" class="bg-purple-6 q-my-lg q-mx-xxl"></div>
+                </div>
+
+            </div>
+          </div>
+
+          <div class="bg-purple-6 text-yellow-6 q-pa-lg q-pa-md-xl" style="border-radius: 10px;" >
+            <h5>About ₿itcoin (BTC)</h5>
+            <p>₿itcoin (BTC) is the first cryptocurrency built on blockchain technology, also known as a decentralized digital currency that is based on cryptography. Unlike government-issued or fiat currencies such as US Dollars or Euro which are controlled by central banks, ₿itcoin can operate without the need of a central authority like a central bank or a company. The decentralized nature allows it to operate on a peer-to-peer network whereby users are able to send funds to each other without going through intermediaries.</p>
+            <p>The creator is an unknown individual or group that goes by the name Satoshi Nakamoto with the idea of an electronic peer-to-peer cash system as it is written in a whitepaper. Until today, the true identity of Satoshi Nakamoto has not been verified though there has been speculation and rumor as to who Satoshi might be. What we do know is that officially, the first genesis block of BTC was mined on 9th January 2009, defining the start of cryptocurrencies.</p>
+          </div>
+          <div style="height: 25px;"></div>
+
+          <div class="bg-yellow-6 text-purple-6 q-pa-lg q-pa-md-xl" style="border-radius: 10px;" >
+              <h5>How does ₿itcoin work?</h5>
+              <p>While the general public perceives ₿itcoin as a physical looking coin, it is actually far from that. Under the hood, it is a distributed accounting ledger that is stored as a chain of blocks - hence the name blockchain.</p>
+              <p>Let's compare how ₿itcoin is different from a commercial bank, which operates as a centralized system. Given a situation where Alice wants to transact with Bob, the bank is the only entity that holds the ledger that describes how much balance Alice and Bob has. As the bank maintains the ledger, they will do the verification as to whether Alice has enough funds to send to Bob. Finally when the transaction successfully takes place, the Bank will deduct Alice’s account and credit Bob’s account with the latest amount.</p>
+              <p>₿itcoin conversely works in a decentralized manner. Since there is no central figure like a bank to verify the transactions and maintain the ledger, a copy of the ledger is distributed across ₿itcoin nodes. A node is a piece of software that anybody can download and run to participate in the network. With that, everybody has a copy of how much balance Alice and Bob has, and there will be no dispute of fund balance.</p>
+              <p>Now, if Alice were to transact with Bob using ₿itcoin. Alice will have to broadcast her transaction to the network that she intends to send $1 to Bob in equivalent amount of ₿itcoin. So how does the system determine if Alice has enough ₿itcoin to execute the transaction? This is where mining takes place.</p>
+          </div>
+          <div style="height: 25px;"></div>
+
+          <div class="bg-blue-6 text-yellow-6 q-pa-lg q-pa-md-xl" style="border-radius: 10px;" >
+            <h5>₿itcoin Mining</h5>
+            <p>A ₿itcoin miner will use his or her computer rigs to validate Alice’s transaction to be added into the ledger. In order to stop a miner from adding any arbitrary transactions, they will need to solve a complex puzzle. Only if the miner is able to solve the puzzle (called the Proof of Work), which happens at random, then he or she is able to add the transactions into the ledger and the record is final.</p>
+          </div>
+          <div style="height: 50px;"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
+
+  <!-- link to donuts plug-in js code -->
+  <script src="js/donut.js"></script>
+  <!-- need this to link page to main js code -->
+  <script src="js/main.js"></script>
+  <!-- chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    // Store price history
+    const priceHistory = [];
+    const timeLabels = [];
+    let btcChart;
+
+    function initChart() {
+      // Create an Image object for the custom point
+      const pointImage = new Image(20, 20); // set size of the image
+      pointImage.src = './images/icon_sam_small.png'; // use the same image or any other image
+
+      const ctx = document.getElementById('btcChart').getContext('2d');
+      btcChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: timeLabels,
+          datasets: [{
+            label: [
+              '₿itcoin Price (USD)',
+              '*I will update every 60 seconds '
+            ],
+            data: priceHistory,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1,
+
+            // add these properties for custom points
+            pointStyle: pointImage,
+            pointRadius: 25,
+            pointHoverRadius: 25
+
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: false
+            }
+          },
+          plugins: {
+            title: {
+              display: true,
+              text: '₿itcoin Price (USD)',
+              font: {
+                size: 12
+              },
+              padding: {
+                bottom: 0  // Space between title and subtitle
+              }
+            },
+            subtitle: {
+              display: true,
+              text: '*I will update every 60 seconds',
+              font: {
+                size: 12
+              },
+              padding: {
+                bottom: 10  // space between subtitle and chart
+              }
+            },
+            legend: {
+              display: false  // hide the legend since we're using title/subtitle
+            }
+          }
+        }
+      });
+    }
+
+    function updateChart(price) {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString();
+
+      priceHistory.push(price);
+      timeLabels.push(timeStr);
+
+      // Keep only last 100 minutes of data
+      // (25 data points at 1-minute intervals)
+      if (priceHistory.length > 100) {
+        priceHistory.shift();
+        timeLabels.shift();
+      }
+
+      if (btcChart) {
+        btcChart.update();
+      }
+    }
+
+    function fetchBitcoinPrice() {
+      const samAndJakesTotalHoliday2024Btc = 0.000701;
+      const individualBtc = samAndJakesTotalHoliday2024Btc / 2;
+
+      fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd')
+        .then(response => response.json())
+        .then(data => {
+          const btcPrice = data.bitcoin.usd;
+          console.error(btcPrice);
+
+          document.getElementById('btc-price').textContent = `$${btcPrice.toLocaleString()}`;
+          document.getElementById('total-btc').textContent = samAndJakesTotalHoliday2024Btc;
+          document.getElementById('individual-btc').textContent = individualBtc;
+          document.getElementById('your-btc-value').textContent =
+            `$${(btcPrice * individualBtc).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+          // Update chart
+          updateChart(btcPrice);
+        })
+        .catch(error => {
+          console.error('error fetching ₿itcoin price:', error);
+          document.getElementById('btc-price').textContent = 'error loading price...';
+          document.getElementById('individual-btc').textContent = 'error loading amount...';
+          document.getElementById('your-btc-value').textContent = 'error loading value...';
+        });
+    }
+
+    // initialize chart and start fetching prices
+    initChart();
+    fetchBitcoinPrice();
+    setInterval(fetchBitcoinPrice, 60000);
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/quasar@2.14.6/dist/quasar.umd.prod.js"></script>
+
+</body>
+
+</html>

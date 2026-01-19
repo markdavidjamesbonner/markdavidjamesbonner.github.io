@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Button with Confetti</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body style="background-color: #F37023; height: 300vh;">
+
+<div id="donate-button">
+  <a href="https://www.paypal.com/donate/?hosted_button_id=EQUFW5QQ32XW4" target="_blank">
+    <img src="https://images.squarespace-cdn.com/content/v1/686909a25634896b014079e3/9036e0ee-b2e8-40f7-ab57-29065cf0b02f/btn_flower_deck_1.png" alt="Donate" id="donate-img">
+  </a>
+</div>
+
+<style>
+  #donate-button {
+    position: fixed;
+    bottom: -15px;
+    right: -15px;
+    z-index: 9999;
+  }
+
+  #donate-button:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #donate-button:active {
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #donate-img {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #donate-img:hover {
+    transform: scale(1.2);
+  }
+</style>
+
+<script>
+  let lastScrollY = window.scrollY;
+  let rotation = 0;
+  let confettiTimeout;
+
+  // Function to trigger confetti burst from the top of the donate button
+  function triggerConfetti() {
+    const button = document.getElementById('donate-button');
+    const rect = button.getBoundingClientRect();
+
+    // Calculate position at the top center of the button
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + 100;
+
+    // Create confetti burst
+    confetti({
+      particleCount: 101,
+      angle: 90, // Shoot upward
+      spread: 45, // Spread angle
+      origin: { x: x / window.innerWidth, y: y / window.innerHeight },
+      colors: ['#31454c', '#009dbc', '#f37023', '#f6f5be'],
+      gravity: 0.5,
+      drift: -1,
+      ticks: 500,
+      startVelocity: 20,
+      decay: 0.95,
+    });
+    confetti({
+      particleCount: 101,
+      angle: 135, // Shoot upward/left
+      spread: 45, // Spread angle
+      origin: { x: x / window.innerWidth, y: y / window.innerHeight },
+      colors: ['#31454c', '#009dbc', '#f37023', '#f6f5be'],
+      gravity: 0.5,
+      drift: -1,
+      ticks: 500,
+      startVelocity: 20,
+      decay: 0.95
+    });
+  }
+
+  // Add hover event listener for confetti
+  document.getElementById('donate-button').addEventListener('mouseenter', function() {
+    // Clear any existing timeout
+    if (confettiTimeout) {
+      clearTimeout(confettiTimeout);
+    }
+
+    // Trigger confetti after a small delay
+    confettiTimeout = setTimeout(triggerConfetti, 100);
+  });
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    const button = document.getElementById('donate-button');
+
+    if (currentScrollY > lastScrollY) {
+      // scrolling down
+      rotation += 10;
+    } else if (currentScrollY < lastScrollY) {
+      // scrolling up
+      rotation -= 10;
+    }
+
+    button.style.transform = `rotate(${rotation}deg)`;
+    lastScrollY = currentScrollY;
+  });
+</script>
+
+</body>
+</html>
